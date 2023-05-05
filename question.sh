@@ -54,4 +54,4 @@ sed 's/;/,/g' |
 # Usa el '.' para indicar decimales
 sed -E 's/,([0-9]+)$/.\1/g'
 
-$ bash question.sh data.csv > output.csv
+bash question.sh data.csv > output.csv

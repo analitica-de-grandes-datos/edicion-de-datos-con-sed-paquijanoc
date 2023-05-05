@@ -46,7 +46,9 @@
 sed -E 's#([0-9]{2})/([0-9]{2})/([0-9]{2})#20\3-\2-\1#g' $1 |
 
 # Transforma el archivo para que todos los campos nulos aparezcan como '\N'
-sed 's/\b\\N\b/\\N/g' |
+#sed 's/\b\\N\b/\\N/g' |
+sed -E 's/^,|,$//g; s/,,/,\\N,/g; s/,$/,\\N/g; s/^$/\\N/g' $1 |
+
 
 # Reemplaza los ';' por ','
 sed 's/;/,/g' |

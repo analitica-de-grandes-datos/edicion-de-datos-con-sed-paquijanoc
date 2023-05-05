@@ -43,16 +43,16 @@
 #
 
 # Reemplaza el formato de las fechas de DD/MM/YY a YYYY-MM-DD
-sed -E 's#([0-9]{2})/([0-9]{2})/([0-9]{2})#20\3-\2-\1#g' $1 
+sed -E 's#([0-9]{2})/([0-9]{2})/([0-9]{2})#20\3-\2-\1#g' "$PWD/data.csv" 
 
 # Transforma el archivo para que todos los campos nulos aparezcan como '\N'
 #sed 's/,,/,\\N,/g; s/,$/,\\N/g'
 #sed 's/n/,\\N,/g; s/,$/,\\N/g'
 #sed 's/N/,\\N,/g; s/,$/,\\N/g'
-sed -E 's/^,|,$|,,/,\\N,/g'
+sed -E 's/^,|,$|,,/,\\N,/g' "$PWD/data.csv"
 
 # Reemplaza los ';' por ','
-sed 's/;/,/g' 
+sed 's/;/,/g' "$PWD/data.csv"
 
 # Usa el '.' para indicar decimales
-sed -E 's/,([0-9]+)$/.\1/g'
+sed -E 's/,([0-9]+)$/.\1/g' "$PWD/data.csv"

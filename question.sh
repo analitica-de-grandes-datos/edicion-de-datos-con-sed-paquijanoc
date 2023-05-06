@@ -41,12 +41,12 @@
 #
 #  >>> Escriba su codigo a partir de este punto <<<
 #
-sed '12 s/\([0-9]\)\/\([0-9]\)\/\(20[0-9][0-9]\)/\3-0\2-0\1/g' 
-sed 's/\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)/20\3-\2-\1/g' 
-sed -e 's/[a-z]/\U&/g'  o
-sed -E 's|^([^;]*;[^;]*;[^;]*;)([^,]*),([^;]*)$|\1\2.\3|'  
-sed 's/;\s*N/;\\N/g' 
-sed 's/;;/;\\N;/g' 
-sed '5 s/;/;\\\N/3' 
-sed '7 s/;/;\\\N/3' 
-sed 's/;/,/g' 
+sed '12 s/\([0-9]\)\/\([0-9]\)\/\(20[0-9][0-9]\)/\3-0\2-0\1/g' data.csv> output1.csv
+sed 's/\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)/20\3-\2-\1/g' output1.csv> output2.csv
+sed -e 's/[a-z]/\U&/g'  output2.csv> output3.csv
+sed -E 's|^([^;]*;[^;]*;[^;]*;)([^,]*),([^;]*)$|\1\2.\3|'  output3.csv> output4.csv
+sed 's/;\s*N/;\\N/g' output4.csv> output5.csv
+sed 's/;;/;\\N;/g' output5.csv> output6.csv
+sed '5 s/;/;\\\N/3' output6.csv> output7.csv
+sed '7 s/;/;\\\N/3' output7.csv> output8.csv
+sed 's/;/,/g' output8.csv> output.csv

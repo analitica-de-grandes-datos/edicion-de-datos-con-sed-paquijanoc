@@ -41,18 +41,12 @@
 #
 #  >>> Escriba su codigo a partir de este punto <<<
 #
-
-# Reemplaza el formato de las fechas de DD/MM/YY a YYYY-MM-DD
-sed -E 's#([0-9]{2})/([0-9]{2})/([0-9]{2})#20\3-\2-\1#g' "$PWD/data.csv" 
-
-# Transforma el archivo para que todos los campos nulos aparezcan como '\N'
-#sed 's/,,/,\\N,/g; s/,$/,\\N/g'
-#sed 's/n/,\\N,/g; s/,$/,\\N/g'
-#sed 's/N/,\\N,/g; s/,$/,\\N/g'
-sed -E 's/^,|,$|,,/,\\N,/g' "$PWD/data.csv"
-
-# Reemplaza los ';' por ','
-sed 's/;/,/g' "$PWD/data.csv"
-
-# Usa el '.' para indicar decimales
-sed -E 's/,([0-9]+)$/.\1/g' "$PWD/data.csv"
+!sed '12 s/\([0-9]\)\/\([0-9]\)\/\(20[0-9][0-9]\)/\3-0\2-0\1/g' 
+!sed 's/\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\)/20\3-\2-\1/g' 
+!sed -e 's/[a-z]/\U&/g'  o
+!sed -E 's|^([^;]*;[^;]*;[^;]*;)([^,]*),([^;]*)$|\1\2.\3|'  
+!sed 's/;\s*N/;\\N/g' 
+!sed 's/;;/;\\N;/g' 
+!sed '5 s/;/;\\\N/3' 
+!sed '7 s/;/;\\\N/3' 
+!sed 's/;/,/g' 
